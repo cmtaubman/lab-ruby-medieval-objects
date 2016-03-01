@@ -6,17 +6,17 @@
 # full_name
 
 class Person
-  def initialize first_name,last_name,full_name
-    attr_writer :first_name, :last_name, :full_name
-
+  attr_reader :first_name, :last_name, :full_name
+  def initialize first_name,last_name
     @first_name = first_name
     @last_name = last_name
-    @full_name = full_name
+    @full_name = "#{first_name} #{last_name}"
   end
 end
 
 class Player < Person
-  def initialize health=20,strength=5,alive=true
+  def initialize first_name, last_name, health=20,strength=5,alive=true
+    super first_name, last_name
     @health = health
     @strength = strength
     @alive = alive if health>=0
